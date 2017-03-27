@@ -1,4 +1,4 @@
-package io.renren.demos.controller;
+package io.demo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
