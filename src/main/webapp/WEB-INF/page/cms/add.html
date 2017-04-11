@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <title></title>
+  #parse("cms/header.html")
+
+  <!-- 配置文件 -->
+  <script type="text/javascript" src="${rc.contextPath}/statics/plugins/ueditor/ueditor.config.js?_${date.systemTime}"></script>
+  <!-- 编辑器源码文件 -->
+  <script type="text/javascript" src="${rc.contextPath}/statics/plugins/ueditor/ueditor.all.js"></script>
+  <!-- 语言包文件(建议手动加载语言包，避免在ie下，因为加载语言失败导致编辑器加载失败) -->
+  <script type="text/javascript" src="${rc.contextPath}/statics/plugins/ueditor/lang/zh-cn/zh-cn.js"></script>
+  <script type="text/javascript">
+
+      $(function () {
+          var vm = new Vue({
+              el:'#rrapp',
+              data:{
+                  q:{
+                      username: null
+                  },
+                  showList: true,
+                  title:null,
+                  roleList:{},
+                  posts:{
+                  }
+              },
+              methods: {
+                  saveOrUpdate: function (event) {
+                      var url = "../cms/posts/save";
+                      $.ajax({
+                          type: "POST",
+                          url: url,
+                          data: JSON.stringify(vm.posts),
+                          success: function(r){
+                              if(r.code === 0){
+                                  alert('操作成功', function(index){
+                                  });
+                              }else{
+                                  alert(r.msg);
+                              }
+                          }
+                      });
+                  }
+              }
+          });
+
+          var editor = UE.getEditor('container')
+      });
+
+  </script>
+</head>
+<body>
+<div id="rrapp" class="panel admin-panel">
+  <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>增加内容</strong></div>
+  <div class="body-content">
+    <form method="post" class="form-x" action="">  
+      <div class="form-group">
+        <div class="label">
+          <label>postAuthor：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input w50" v-model="posts.postAuthor" name="title" data-validate="required:请输入标题" />
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>postContent：</label>
+        </div>
+        <div class="field">
+          <script id="container" name="content" type="text/plain">文章内容</script>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>postTitle：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input w50" v-model="posts.postTitle" name="title" data-validate="required:请输入标题" />
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>postExcerpt：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input w50" v-model="posts.postExcerpt" name="title" data-validate="required:请输入标题" />
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>postStatus：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input w50" v-model="posts.postStatus" name="title" data-validate="required:请输入标题" />
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>postName：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input w50" v-model="posts.postName" name="title" data-validate="required:请输入标题" />
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>menuOrder：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input w50" v-model="posts.menuOrder" name="title" data-validate="required:请输入标题" />
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>postType：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input w50" v-model="posts.postType" name="title" data-validate="required:请输入标题" />
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label></label>
+        </div>
+        <div class="field">
+          <input type="button" class="btn btn-primary" @click="saveOrUpdate" value="确定"/>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+</body></html>

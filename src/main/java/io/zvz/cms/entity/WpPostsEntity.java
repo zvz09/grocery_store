@@ -6,60 +6,60 @@ import java.util.Date;
 
 
 /**
+ * 文章内容
  * 
- * 
- * @author chenshun
+ * @author zvz
  * @email sunlightcs@gmail.com
  * @date 2017-03-27 22:30:19
  */
 public class WpPostsEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	//
+	//主键ID
 	private Long id;
-	//
+	//作者
 	private Long postAuthor;
-	//
+	//创建时间
 	private Date postDate;
-	//
+	//格林尼治时间
 	private Date postDateGmt;
-	//
+	//正文
 	private String postContent;
-	//
+	//标题
 	private String postTitle;
-	//
+	//摘录
 	private String postExcerpt;
-	//
+	//状态
 	private String postStatus;
-	//
+	//评论状态
 	private String commentStatus;
-	//
+	//ping状态
 	private String pingStatus;
-	//
+	//文章密码
 	private String postPassword;
-	//
+	//缩略名
 	private String postName;
 	//
 	private String toPing;
 	//
 	private String pinged;
-	//
+	//修改时间
 	private Date postModified;
 	//
 	private Date postModifiedGmt;
 	//
 	private String postContentFiltered;
-	//
+	//父文章
 	private Long postParent;
 	//
 	private String guid;
-	//
+	//排序
 	private Integer menuOrder;
-	//
+	//类型
 	private String postType;
 	//
 	private String postMimeType;
-	//
+	//评论总数
 	private Long commentCount;
 
 	/**
