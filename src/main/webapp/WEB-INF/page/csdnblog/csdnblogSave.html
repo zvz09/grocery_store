@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+    function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Meta tag Keywords -->
+    <!-- css files -->
+    <link href="${rc.contextPath}/statics/csdnblog/css/style.css" rel="stylesheet" type="text/css" media="all">
+    <!-- //css files -->
+    <!-- Supportive-JavaScript -->
+    <script type="text/javascript" src="${rc.contextPath}/statics/libs/jquery.min.js"></script>
+    <script type="text/javascript" src="${rc.contextPath}/statics/csdnblog/js/simplyCountdown.js"></script>
+    <!-- online-fonts -->
+</head>
+<body>
+<!--header-->
+<div class="countdown-timer-w3laits">
+    <div class="starts">
+        <h2>WEBSITE IS UNDER CONSTRUCTION</h2>
+        <p>we'll be here soon with a new website, Estimated time.</p>
+    </div>
+</div>
+<!--//header-->
+
+<!--newsletter-->
+<div class="newsletter w3l-agile">
+    <p>Subscribe To Get Notified !</p>
+    <div class="email">
+        <form action="save" method="post">
+            <input placeholder="Enter Url" name="url" class="mail" type="url" required="">
+            <input type="submit" value="subscribe">
+        </form>
+    </div>
+</div>
+<!--//newsletter-->
+
+<!-- Countdown-timer -->
+
+<div class="examples">
+    <div class="simply-countdown-losange" id="simply-countdown-losange"></div>
+</div>
+
+<div class="clear"></div>
+
+<!-- //Countdown-timer -->
+
+<!-- Custom-JavaScript-File-Links -->
+<!-- Countdown-Timer-JavaScript -->
+<script>
+    var d = new Date();
+    d.setFullYear(2017,5,27);
+    // default example
+    simplyCountdown('.simply-countdown-one', {
+        year: d.getFullYear(),
+        month: d.getMonth() + 1,
+        day: d.getDate()
+    });
+
+    // inline example
+    simplyCountdown('.simply-countdown-inline', {
+        year: d.getFullYear(),
+        month: d.getMonth() + 1,
+        day: d.getDate(),
+        inline: true
+    });
+
+    //jQuery example
+    $('#simply-countdown-losange').simplyCountdown({
+        year: d.getFullYear(),
+        month: d.getMonth() + 1,
+        day: d.getDate(),
+        enableUtc: false
+    });
+</script>
+<!-- //Countdown-Timer-JavaScript -->
+<!-- //Custom-JavaScript-File-Links -->
+
+
+
+<!--footer-->
+<!--<div class="footer-w3">
+    <p>Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+</div>-->
+<!--//footer-->
+
+</body>
+</html>

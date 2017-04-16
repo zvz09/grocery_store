@@ -46,6 +46,7 @@
 	        <value>
 	        	/statics/**=anon
 				/demos/**=anon  <!--访问demos 下的资源不用验证-->
+				/csdnblog/**=anon
 	        	/login.html=anon
 	        	/sys/login=anon
 	        	/captcha.jpg=anon

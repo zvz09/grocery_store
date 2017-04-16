@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.zvz.cms.dao.CsdnblogDao">
+
+	<select id="queryObject" resultType="io.zvz.cms.entity.CsdnblogEntity">
+		select * from csdnblog where id = #{value}
+	</select>
+
+	<select id="queryObjectByurl" resultType="io.zvz.cms.entity.CsdnblogEntity">
+		select * from csdnblog where url = #{value}
+	</select>
+	<select id="queryList" resultType="io.zvz.cms.entity.CsdnblogEntity">
+		select * from csdnblog 
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from csdnblog 
+	</select>
+	 
+	<insert id="save" parameterType="io.zvz.cms.entity.CsdnblogEntity" useGeneratedKeys="true" keyProperty="id">
+		insert into csdnblog
+		(
+			`author`, 
+			`author_url`, 
+			`url`, 
+			`title`, 
+			`context`, 
+			`label`, 
+			`creat_date`
+		)
+		values
+		(
+			#{author}, 
+			#{authorUrl}, 
+			#{url}, 
+			#{title}, 
+			#{context}, 
+			#{label}, 
+			#{creatDate}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="io.zvz.cms.entity.CsdnblogEntity">
+		update csdnblog 
+		<set>
+			<if test="author != null">`author` = #{author}, </if>
+			<if test="authorUrl != null">`author_url` = #{authorUrl}, </if>
+			<if test="url != null">`url` = #{url}, </if>
+			<if test="title != null">`title` = #{title}, </if>
+			<if test="context != null">`context` = #{context}, </if>
+			<if test="label != null">`label` = #{label}, </if>
+			<if test="creatDate != null">`creat_date` = #{creatDate}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from csdnblog where id = #{value}
+	</delete>
+	
+	<delete id="deleteBatch">
+		delete from csdnblog where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

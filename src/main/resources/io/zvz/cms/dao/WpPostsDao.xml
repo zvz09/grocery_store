@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.zvz.cms.dao.WpPostsDao">
+	<insert id="save" parameterType="io.zvz.cms.entity.WpPostsEntity" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO wp_posts
+			(
+			 	`id`,
+				`post_author`,
+				`post_date`,
+				`post_content`,
+				`post_title`,
+				`post_excerpt`,
+				`post_status`,
+				`post_name`,
+				`menu_order`,
+				`post_type`
+				)
+		VALUES
+			(
+				#{id},
+			  	#{postAuthor},
+		  		#{postDate},
+	  			#{postContent},
+  				#{postTitle},
+			  	#{postExcerpt},
+			  	#{postStatus},
+			  	#{postName},
+				#{menuOrder},
+				#{postType}
+			);
+	</insert>
+	 
+
+</mapper>
