@@ -11,7 +11,7 @@
 		select * from csdnblog where url = #{value}
 	</select>
 	<select id="queryList" resultType="io.zvz.cms.entity.CsdnblogEntity">
-		select * from csdnblog 
+		select id,author,author_url,title,label,creat_date from csdnblog
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if>
