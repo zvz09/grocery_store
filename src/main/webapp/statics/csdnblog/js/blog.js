@@ -12,7 +12,7 @@ app.factory("csdnblogListService",["$http",function(http){
 app.controller('csdnblogListCtrl',["$scope","csdnblogListService","$filter",function (scope,csdnblogListService,$filter) {
     scope.contextLists =[];
     scope.pageNum = 1;
-    scope.pageSize = 1;
+    scope.pageSize = 8;
     scope.noMoreData = false;
     /**
      * 点击加载更多
