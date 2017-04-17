@@ -3,13 +3,11 @@ package io.zvz.cms.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
 import io.zvz.cms.entity.CsdnblogEntity;
 import io.zvz.cms.service.CsdnblogService;
-import io.zvz.cms.utils.CsdnBlog;
-import io.zvz.cms.utils.CsdnPipeline;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
+import io.zvz.cms.utils.webmagicBlog;
+import io.zvz.cms.utils.webmagicPipeline;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -85,8 +83,14 @@ public class CsdnblogController {
 		if(url!=null){
 			try{
 				if(csdnblogService.queryObjectByurl(url)==null){
-					Spider.create(new CsdnBlog()).addUrl(url)
-							.addPipeline(new CsdnPipeline()) .run();
+					Integer type = 0;
+					if(url.startsWith("http://blog.csdn.net")){
+						type = 1;
+					}else if(url.indexOf(".iteye.")!=-1){
+						type =2;
+					}
+					Spider.create(new webmagicBlog(type)).addUrl(url)
+							.addPipeline(new webmagicPipeline()) .run();
 				}
 				return R.ok();
 			}catch (Exception e){

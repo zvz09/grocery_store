@@ -8,9 +8,10 @@ import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;
 
 /**
+ * 保存爬取信息
  * Created by zvz on 2017/4/16.
  */
-public class CsdnPipeline implements Pipeline {
+public class webmagicPipeline implements Pipeline {
 
     private CsdnblogDao csdnblogDao;
     @Override
