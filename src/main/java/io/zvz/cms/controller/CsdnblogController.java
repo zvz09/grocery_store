@@ -88,6 +88,8 @@ public class CsdnblogController {
 						type = 1;
 					}else if(url.indexOf(".iteye.")!=-1){
 						type =2;
+					}else if(url.indexOf(".cnblogs.")!=-1){
+						type = 3;
 					}
 					Spider.create(new webmagicBlog(type)).addUrl(url)
 							.addPipeline(new webmagicPipeline()) .run();

@@ -16,7 +16,7 @@ import java.util.Date;
  */
 public class webmagicBlog implements PageProcessor {
 
-    private Integer type;  // 來源網站  1 csdn  2 iteye
+    private Integer type;  // 來源網站  1 csdn  2 iteye 3 cnblogs
 
     private Site site = Site
             .me()
@@ -44,7 +44,12 @@ public class webmagicBlog implements PageProcessor {
                 csdnblogEntity.setContext(page.getHtml().xpath("//*[@id=\"blog_content\"]").toString());
                 csdnblogEntity.setLabel(page.getHtml().xpath("//*[@id=\"main\"]/div[2]/div[1]/div/a/text()").all().toString());
                 break;
-
+            case 3:
+                csdnblogEntity.setAuthor(page.getHtml().xpath("//*[@id=\"Header1_HeaderTitle\"]/text()").toString());
+                csdnblogEntity.setAuthorUrl(page.getHtml().xpath("//*[@id=\"Header1_HeaderTitle\"]/@href").toString());
+                csdnblogEntity.setTitle(page.getHtml().xpath("//*[@id=\"cb_post_title_url\"]/text()").toString());
+                csdnblogEntity.setContext(page.getHtml().xpath("//*[@id=\"topics\"]/div/div[2]").toString());
+                break;
             default:
                 break;
         }
