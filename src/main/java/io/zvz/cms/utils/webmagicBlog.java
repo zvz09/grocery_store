@@ -34,7 +34,7 @@ public class webmagicBlog implements PageProcessor {
                 csdnblogEntity.setAuthor(page.getHtml().xpath("//*[@id=\"blog_userface\"]/span/a/text()").toString());
                 csdnblogEntity.setAuthorUrl(page.getHtml().xpath("//*[@id=\"blog_userface\"]/span/a/@href").toString());
                 csdnblogEntity.setTitle(page.getHtml().xpath("//span[@class='link_title']/a/text()").toString());
-                csdnblogEntity.setContext(page.getHtml().xpath("//div[@class='markdown_views']").toString());
+                csdnblogEntity.setContext(page.getHtml().xpath("//*[@id=\"article_details\"]").toString());
                 csdnblogEntity.setLabel(page.getHtml().xpath("//div[@class='article_l']/span/a/text()").all().toString());
                 break;
             case 2:

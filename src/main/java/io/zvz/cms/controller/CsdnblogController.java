@@ -77,9 +77,8 @@ public class CsdnblogController {
 	/**
 	 * 保存
 	 */
-	@ResponseBody
 	@RequestMapping("/save")
-	public R save(String url){
+	public String save(String url){
 		if(url!=null){
 			try{
 				if(csdnblogService.queryObjectByurl(url)==null){
@@ -94,14 +93,12 @@ public class CsdnblogController {
 					Spider.create(new webmagicBlog(type)).addUrl(url)
 							.addPipeline(new webmagicPipeline()) .run();
 				}
-				return R.ok();
-			}catch (Exception e){
-				return R.error();
-			}
-		}else {
-			return R.error();
-		}
 
+			}catch (Exception e){
+				e.printStackTrace();
+			}
+		}
+		return "/csdnblog/csdnblogList.html";
 	}
 	
 	/**
