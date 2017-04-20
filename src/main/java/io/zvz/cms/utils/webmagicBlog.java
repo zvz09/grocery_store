@@ -16,7 +16,7 @@ import java.util.Date;
  */
 public class webmagicBlog implements PageProcessor {
 
-    private Integer type;  // 來源網站  1 csdn  2 iteye 3 cnblogs
+    private Integer type;  // 來源網站  1 csdn  2 iteye 3 cnblogs 4 oschina
 
     private Site site = Site
             .me()
@@ -50,6 +50,13 @@ public class webmagicBlog implements PageProcessor {
                 csdnblogEntity.setTitle(page.getHtml().xpath("//*[@id=\"cb_post_title_url\"]/text()").toString());
                 csdnblogEntity.setContext(page.getHtml().xpath("//*[@id=\"topics\"]/div/div[2]").toString());
                 break;
+            case 4:
+                csdnblogEntity.setAuthor(page.getHtml().xpath("//div[@class='name']/a/text()").toString());
+                csdnblogEntity.setAuthorUrl(page.getHtml().xpath("//div[@class='name']/a/@href").toString());
+                csdnblogEntity.setTitle(page.getHtml().xpath("//div[@class='title']/text()").toString());
+                csdnblogEntity.setContext(page.getHtml().xpath("//*[@id=\"blogBody\"]").toString());
+                csdnblogEntity.setLabel(page.getHtml().xpath("//*[@id=\"classify\"]/a/text()").toString());
+                csdnblogEntity.setLabel(page.getHtml().xpath("//*[@id=\"tag\"]/a/text()").all().toString()+csdnblogEntity.getLabel());
             default:
                 break;
         }
