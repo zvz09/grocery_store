@@ -10,10 +10,7 @@ import io.zvz.cms.utils.webmagicBlog;
 import io.zvz.cms.utils.webmagicPipeline;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 
 import io.renren.utils.PageUtils;
@@ -49,10 +46,13 @@ public class CsdnblogController {
 	 */
 	@ResponseBody
 	@RequestMapping("/list")
-	public R list(Integer page, Integer limit){
+	public R list(@RequestParam(value="page", required=false)Integer page,
+				  @RequestParam(value="limit", required=false)Integer limit,
+				  @RequestParam(value="keyword", required=false)String keyword){
 		Map<String, Object> map = new HashMap<>();
 		map.put("offset", (page - 1) * limit);
 		map.put("limit", limit);
+		map.put("keyword", keyword);
 
 		//查询列表数据
 		List<CsdnblogEntity> csdnblogList = csdnblogService.queryList(map);

@@ -11,14 +11,25 @@
 		select * from csdnblog where url = #{value}
 	</select>
 	<select id="queryList" resultType="io.zvz.cms.entity.CsdnblogEntity">
-		select id,author,author_url,title,label,creat_date from csdnblog WHERE  author!='' AND context !='' ORDER BY creat_date DESC
+		select id,author,author_url,title,label,creat_date
+			from csdnblog
+		WHERE  author!='' AND context !=''
+		<if test="keyword!=null">
+			AND label LIKE concat(concat('%',#{keyword}),'%') OR title LIKE concat(concat('%',#{keyword}),'%')
+		</if>
+
+		ORDER BY creat_date DESC
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if>
 	</select>
 	
  	<select id="queryTotal" resultType="int">
-		select count(*) from csdnblog 
+		select count(*) from csdnblog
+		WHERE  author!='' AND context !=''
+		<if test="keyword!=null">
+			AND label LIKE concat(concat('%',#{keyword}),'%') OR title LIKE concat(concat('%',#{keyword}),'%')
+		</if>
 	</select>
 	 
 	<insert id="save" parameterType="io.zvz.cms.entity.CsdnblogEntity" useGeneratedKeys="true" keyProperty="id">

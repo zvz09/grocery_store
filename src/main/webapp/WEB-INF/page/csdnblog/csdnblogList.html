@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <title>Blog</title>
     <!-- Bootstrap Core CSS -->
-    <link href="${rc.contextPath}/statics/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${rc.contextPath}/statics/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Additional fonts for this theme -->
     <link href="${rc.contextPath}/statics/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Custom styles for this theme -->
@@ -34,14 +34,40 @@
     <!-- Theme JavaScript -->
     <script src="${rc.contextPath}/statics/csdnblog/js/clean-blog.min.js"></script>
 
-    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
-    <script type="text/javascript" src="${rc.contextPath}/statics/csdnblog/js/blog.js">
+    <script src="${rc.contextPath}/statics/libs/angular.min.js"></script>
+    <script type="text/javascript" src="${rc.contextPath}/statics/csdnblog/js/blog.js?_${date.systemTime}">
     </script>
 </head>
 
 <body ng-controller="csdnblogListCtrl">
+<!-- Navigation -->
+<nav class="navbar fixed-top navbar-toggleable-md navbar-light" id="mainNav">
+    <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu <i class="fa fa-bars"></i>
+    </button>
+        <a class="navbar-brand page-scroll" href="index.html">Blog</a>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="csdnblogSave.html">Add</a>
+                </li>
+                <!--<li class="nav-item">
+                    <a class="nav-link page-scroll" href="about.html"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="post.html">Sample Post</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="contact.html">Contact</a>
+                </li>-->
+            </ul>
+        </div>
+    </div>
+</nav>
 <!-- Page Header -->
 <header class="intro-header" style="background-image: url('${rc.contextPath}/statics/csdnblog/images/home-bg.jpg')">
+
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
@@ -53,11 +79,14 @@
         </div>
     </div>
 </header>
-
 <!-- Main Content -->
 <div class="container">
     <div class="row">
         <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+            <form class="well form-search">
+                <input type="text" class="input-medium search-query"   ng-model="keyword" placeholder="Key Word">
+                <button type="button" class=" btn btn-primary" ng-click="search()">Search</button>
+            </form>
             <div ng-repeat="context in contextLists">
                 <div class="post-preview">
                     <a href="/grocery_store/csdnblog/info/{{context.id}}" target="_blank">
