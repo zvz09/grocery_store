@@ -91,6 +91,8 @@ public class CsdnblogController {
 						type = 3;
 					}else if(url.startsWith("https://my.oschina.net")){
 						type = 4;
+					}else if(url.startsWith("http://blog.itpub.net/")){
+						type = 5;
 					}
 					Spider.create(new webmagicBlog(type)).addUrl(url)
 							.addPipeline(new webmagicPipeline()) .run();
